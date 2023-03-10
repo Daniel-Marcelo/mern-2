@@ -16,7 +16,9 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => {
 
 app.get('/api/getList', (req,res) => {
     fetch('https://query2.finance.yahoo.com/v1/finance/search?q=AAPL').then(data => {
-        data.json().then(d => console.log(d))
+        data.json().then(d => {
+            res.end(d)
+        })
     }).catch(er => console.log(er));
   const list = ["item1", "item2", "item3"];
   res.json(list);
